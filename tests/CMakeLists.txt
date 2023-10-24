@@ -18,6 +18,7 @@ add_executable(unit_test
   test_util.h
 
   unit_test/base/builtin_test.cpp
+  unit_test/math/basic_test.cpp
 )
 target_link_libraries(unit_test gtest gtest_main cplib)
 set_target_properties(unit_test
