@@ -1,0 +1,24 @@
+---
+# https://clang.llvm.org/docs/ClangFormatStyleOptions.html
+
+# At least clang-format-15 should be installed
+
+BasedOnStyle: Google  # clang-format -style=Google -dump-config > .clang-format
+
+AllowShortFunctionsOnASingleLine: false
+BreakBeforeBraces: Custom
+BraceWrapping:
+  AfterFunction: true
+ColumnLimit: 100
+DerivePointerAlignment: false
+IndentCaseLabels: false
+InsertBraces: true
+MaxEmptyLinesToKeep: 2
+SpacesInParentheses: false
+SpacesInCStyleCastParentheses: false
+SpaceInEmptyParentheses: false
+TabWidth: 2
+
+# find dir -iname '*.h' -o -iname '*.c' -o -iname '*.cpp' | xargs clang-format -i -style=file
+# don't apply to third_party and interface! can be contorlled by cmake
+...
