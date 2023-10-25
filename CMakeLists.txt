@@ -15,6 +15,8 @@ include_directories("${CMAKE_SOURCE_DIR}")
 include_directories("${CMAKE_SOURCE_DIR}/src")
 
 include(${CMAKE_SOURCE_DIR}/cmake/options.cmake)
+message(STATUS BUILD_32BIT=${BUILD_32BIT})
+
 include(${CMAKE_SOURCE_DIR}/cmake/clang-format.cmake)
 include(${CMAKE_SOURCE_DIR}/cmake/coverage.cmake)
 

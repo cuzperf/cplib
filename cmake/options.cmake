@@ -1,8 +1,3 @@
-option(COVERAGE "Use gcov" OFF)
-message(STATUS COVERAGE=${COVERAGE})
-
-option(CMAKE_VERBOSE_MAKEFILE "Verbose message in cmake" OFF)
-message(STATUS CMAKE_VERBOSE_MAKEFILE=${CMAKE_VERBOSE_MAKEFILE})
-
 option(BUILD_32BIT "Build for 32 bit" OFF)
-message(STATUS BUILD_32BIT=${BUILD_32BIT})
+option(COVERAGE "Use gcov" OFF)
+option(CMAKE_VERBOSE_MAKEFILE "Verbose message in cmake" OFF)
