@@ -11,8 +11,7 @@
 uint64_t addMod(uint64_t a, uint64_t b, uint64_t m)
 {
   assert(a < m && b < m);
-  a += b;
-  // overflow
+  a += b; // overflow if and only if a < b
   if (a < b || a >= m) {
     a -= m;
   }
