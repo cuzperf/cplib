@@ -1,4 +1,5 @@
-include(${CMAKE_SOURCE_DIR}/cmake/options.cmake)
+option(COVERAGE "Use gcov" OFF)
+message(STATUS COVERAGE=${COVERAGE})
 
 if(COVERAGE)
   set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} --coverage")
