@@ -44,16 +44,12 @@ uint64_t mulModu(uint64_t a, uint64_t b, uint64_t m)
 #endif
 }
 
-static uint64_t abs_int64_t(int64_t x)
-{
-  return x < 0 ? -x : x;
-}
-
 int64_t mulModi(int64_t a, int64_t b, int64_t m)
 {
 #if defined(__GNUC__) && defined(_LP64)
   return (__int128)a * b % m;
 #else
+#define abs_int64_t(x) (x < 0 ? -x : x)
   int64_t ans = mulModu(abs_int64_t(a), abs_int64_t(b), abs_int64_t(m));
   if ((a < 0) ^ (b < 0)) {
     ans = -ans;
