@@ -6,6 +6,7 @@
 
 #if defined(_MSC_VER) || defined(_M_X64)
 #include <intrin.h>
+#pragma intrinsic(_umul128, _udiv128, _mul128, _div128)
 #endif
 
 uint64_t addMod(uint64_t a, uint64_t b, uint64_t m)
