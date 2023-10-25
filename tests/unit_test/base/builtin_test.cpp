@@ -5,21 +5,34 @@
 
 namespace cuzperf {
 
-TEST(BaseTest, DISABLED_mulMod)
+TEST(BaseTest, addMod)
 {
-  {
-    constexpr uint64_t a = 123456789012345678;
-    constexpr uint64_t b = 876543210987654321;
-    constexpr uint64_t m = 2718281828456;
-    constexpr uint64_t abm = 1858573242646;
-    EXPECT_EQ(mulModu(a, b, m), abm);
-  }
+  EXPECT_EQ(addMod(2, 3, 4), 1);
+  constexpr uint64_t H_MAX = 1ULL << 63;
+  EXPECT_EQ(addMod(H_MAX + 1, H_MAX + 2, H_MAX + 3), H_MAX);
+  EXPECT_EQ(addMod(H_MAX - 1, H_MAX - 2, H_MAX + 3), H_MAX - 6);
+  EXPECT_EQ(addMod(H_MAX, 1, H_MAX + 2), H_MAX + 1);
+}
+
+TEST(BaseTest, mulMod)
+{
+  EXPECT_EQ(mulModi(2, 2, 3), 1);
+  EXPECT_EQ(mulModi(2, -2, 3), -1);
+  EXPECT_EQ(mulModi(2, 2, -3), 1);
+  EXPECT_EQ(mulModi(2, -2, -3), -1);
   {
     constexpr int64_t a = -123456789012345678;
     constexpr int64_t b = 876543210987654321;
     constexpr int64_t m = 2718281828456;
     constexpr int64_t abm = -1858573242646;
     EXPECT_EQ(mulModi(a, b, m), abm);
+  }
+  {
+    constexpr uint64_t a = 123456789012345678;
+    constexpr uint64_t b = 876543210987654321;
+    constexpr uint64_t m = 2718281828456;
+    constexpr uint64_t abm = 1858573242646;
+    EXPECT_EQ(mulModu(a, b, m), abm);
   }
 }
 
