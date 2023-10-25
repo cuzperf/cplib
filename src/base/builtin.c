@@ -20,7 +20,7 @@ uint64_t addMod(uint64_t a, uint64_t b, uint64_t m)
 
 uint64_t mulModu(uint64_t a, uint64_t b, uint64_t m)
 {
-#if defined(__GNUC__)
+#if defined(__GNUC__) && defined(_LP64)
   return (unsigned __int128)a * b % m;
 #elif defined(_MSC_VER) && defined(_M_X64)
   uint64_t high;
