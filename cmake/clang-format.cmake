@@ -1,3 +1,5 @@
+include(${CMAKE_SOURCE_DIR}/cmake/options.cmake)
+
 file(GLOB_RECURSE SRC_HEADER_FILES "${CMAKE_SOURCE_DIR}/src/*.h")
 file(GLOB_RECURSE SRC_SOURCE_FILES "${CMAKE_SOURCE_DIR}/src/*.cpp")
 
