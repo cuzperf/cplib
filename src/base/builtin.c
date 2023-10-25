@@ -4,8 +4,10 @@
 #include <limits.h>
 #include <math.h>
 
+// See BugReport at https://github.com/MicrosoftDocs/cpp-docs/issues/4121
 #if defined(_MSC_VER) || defined(_M_X64)
 #include <intrin.h>
+#include <windows.h>
 #pragma intrinsic(_umul128, _udiv128, _mul128, _div128)
 #endif
 
@@ -23,11 +25,6 @@ uint64_t mulModu(uint64_t a, uint64_t b, uint64_t m)
 {
 #if defined(__GNUC__) && defined(_LP64)
   return (unsigned __int128)a * b % m;
-#elif defined(_MSC_VER) && defined(_M_X64)
-  uint64_t high, div, rem;
-  const uint64_t low = _umul128(a, b, &high);
-  div = _udiv128(high, low, m, &rem);
-  return rem;
 #else
   a %= m;
   b %= m;
@@ -56,13 +53,8 @@ int64_t mulModi(int64_t a, int64_t b, int64_t m)
 {
 #if defined(__GNUC__) && defined(_LP64)
   return (__int128)a * b % m;
-#elif defined(_MSC_VER) && defined(_M_X64)
-  int64_t high, div, rem;
-  const int64_t low = _mul128(a, b, &high);
-  div = _div128(high, low, m, &rem);
-  return rem;
 #else
-  int64_t ans = (int64_t)mulModu(abs_int64_t(a), abs_int64_t(b), abs_int64_t(m));
+  int64_t ans = mulModu(abs_int64_t(a), abs_int64_t(b), abs_int64_t(m));
   if ((a < 0) ^ (b < 0)) {
     ans = -ans;
   }
