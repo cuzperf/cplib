@@ -23,10 +23,9 @@ uint64_t mulModu(uint64_t a, uint64_t b, uint64_t m)
 #if defined(__GNUC__) && defined(_LP64)
   return (unsigned __int128)a * b % m;
 #elif defined(_MSC_VER) && defined(_M_X64)
-  uint64_t high;
+  uint64_t high, div, rem;
   const uint64_t low = _umul128(a, b, &high);
-  uint64_t rem;
-  _udiv128(high, low, m, &rem);
+  div = _udiv128(high, low, m, &rem);
   return rem;
 #else
   a %= m;
@@ -57,10 +56,9 @@ int64_t mulModi(int64_t a, int64_t b, int64_t m)
 #if defined(__GNUC__) && defined(_LP64)
   return (__int128)a * b % m;
 #elif defined(_MSC_VER) && defined(_M_X64)
-  int64_t high;
+  int64_t high, div, rem;
   const int64_t low = _mul128(a, b, &high);
-  int64_t rem;
-  _div128(high, low, m, &rem);
+  div = _div128(high, low, m, &rem);
   return rem;
 #else
   int64_t ans = (int64_t)mulModu(abs_int64_t(a), abs_int64_t(b), abs_int64_t(m));
