@@ -63,7 +63,7 @@ int64_t mulModi(int64_t a, int64_t b, int64_t m)
   _div128(high, low, m, &rem);
   return rem;
 #else
-  int64_t ans = (int64_t)mulModi(abs_int64_t(a), abs_int64_t(b), abs_int64_t(m));
+  int64_t ans = (int64_t)mulModu(abs_int64_t(a), abs_int64_t(b), abs_int64_t(m));
   if ((a < 0) ^ (b < 0)) {
     ans = -ans;
   }
