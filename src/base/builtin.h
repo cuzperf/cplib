@@ -8,6 +8,9 @@
 extern "C" {
 #endif
 
+// return (a + b) % m, assume a, b < m
+uint64_t addMod(uint64_t a, uint64_t b, uint64_t m);
+
 // return (a * b) % m
 int64_t mulModi(int64_t a, int64_t b, int64_t m);
 uint64_t mulModu(uint64_t a, uint64_t b, uint64_t m);
