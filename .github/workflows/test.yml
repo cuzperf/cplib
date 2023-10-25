@@ -94,7 +94,7 @@ jobs:
         cmake -B build -DBUILD_32BIT=ON
         cmake --build build --config Release
         build\Release\unit_test.exe
-      shell: bash
+      shell: cmd
 
     - name: Build project with CMake and Test
       run: |
