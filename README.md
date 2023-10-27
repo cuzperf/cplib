@@ -1,6 +1,6 @@
 # cplib: C++ library for Programming Contest
 
-[![Code Coverage](https://github.com/cuzperf/cplib/actions/workflows/test.yml/badge.svg)](https://github.com/cuzperf/cplib/actions/workflows/test.yml) [![codecov](https://codecov.io/gh/cuzperf/cplib/graph/badge.svg?token=ZNPDQ55RDU)](https://codecov.io/gh/cuzperf/cplib) ![github license](https://img.shields.io/github/license/cuzperf/cplib)
+![github license](https://img.shields.io/github/license/cuzperf/cplib) [![Code Coverage](https://github.com/cuzperf/cplib/actions/workflows/test.yml/badge.svg)](https://github.com/cuzperf/cplib/actions/workflows/test.yml) [![codecov](https://codecov.io/gh/cuzperf/cplib/graph/badge.svg?token=ZNPDQ55RDU)](https://codecov.io/gh/cuzperf/cplib) [![codedocs](https://codedocs.xyz/cuzperf/cplib.svg)](https://codedocs.xyz/cuzperf/cplib/)
 
 > Please run `python prepare.py` first !!!
 
