@@ -14,7 +14,7 @@
 uint64_t addMod(uint64_t a, uint64_t b, uint64_t m)
 {
   assert(a < m && b < m);
-  a += b; // overflow if and only if a < b
+  a += b;  // overflow if and only if a < b
   if (a < b || a >= m) {
     a -= m;
   }
@@ -111,7 +111,7 @@ int clz_u32(unsigned x)
 #if defined(__GNUC__)
   return __builtin_clz(x);
 #elif defined(_MSC_VER) && (defined(_M_X86) || defined(_M_X64))
-  return __lzcnt(x);    // _lzcnt_u32 will cause link error
+  return __lzcnt(x);  // _lzcnt_u32 will cause link error
 #else
   return sizeof(unsigned) * CHAR_BIT - 1 - lg2_u32(x);
 #endif
