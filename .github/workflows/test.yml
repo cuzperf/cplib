@@ -24,9 +24,9 @@ jobs:
       run: |
         git submodule update --init --recursive
         sudo apt update
-        sudo apt install -y cmake lcov
+        sudo apt install -y cmake lcov doxygen graphviz
         rm -rf build
-        cmake -B build
+        cmake -B build -DDOXYGEN=ON
         cmake --build build
         build/unit_test
       shell: bash
