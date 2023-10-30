@@ -6,6 +6,7 @@ cmake -B build
 cmake --build build -j8
 cmake --build build --target clang-format
 echo "Run clang-format done"
+git add -u
 """
 
 with open(file_name, "w") as file:
