@@ -8,7 +8,6 @@
 #include <string>
 
 namespace cuzperf {
-
 class Timer final {
   std::chrono::high_resolution_clock::time_point start_;
   std::string name_;
@@ -55,7 +54,6 @@ class Timer final {
     ss << std::put_time(&time, "%T");
     return ss.str();
   }
-
   static std::string localFullTimeString() {
     std::tm time = localTime();
     std::stringstream ss;

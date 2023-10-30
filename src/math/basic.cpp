@@ -1,4 +1,10 @@
+#include "math/basic.h"
+
+#include <algorithm>
 #include <cassert>
+
+#include "base/base.h"
+#include "math/basic.hpp"
 
 namespace cuzperf {
 
@@ -14,5 +20,50 @@ int powMod(int x, int n, int M)
   }
   return r;
 }
+
+// (n - n % a) = (n / a) * a  ==>  a^{-1} = -(n / a) (n % a)^{-1}
+int inv(int a, int n)
+{
+  return a == 1 ? 1 : 1LL * (n - n / a) * inv(n % a, n) % n;
+}
+
+// https://cp-algorithms.com/algebra/euclid-algorithm.html
+static uint64_t gcdBit_(uint64_t a, uint64_t b)
+{
+  if (!a || !b) {
+    return a | b;
+  }
+  unsigned shift = ctz_u64(a | b);
+  a >>= ctz_u64(a);
+  do {
+    b >>= ctz_u64(b);
+    if (a > b) {
+      std::swap(a, b);
+    }
+    b -= a;
+  } while (b);
+  return a << shift;
+}
+int64_t gcdBit(int64_t a, int64_t b)
+{
+  return gcdBit_(std::abs(a), std::abs(b));
+}
+
+static std::pair<int64_t, int64_t> crt_(int a1, int m1, int a2, int m2)
+{
+  auto [d, t1, t2] = exGcd(m1, m2);
+  // we assume that the solution always exists
+  assert((a2 - a1) % d == 0);
+  int64_t m = 1LL * (m1 / d) * m2;
+  int64_t ans = (a1 + 1LL * ((a2 - a1) / d) * t1 % m2 * m1) % m;
+  return {ans < 0 ? ans + m : ans, m};
+}
+std::pair<int64_t, int64_t> crt(int a1, int m1, int a2, int m2)
+{
+  a1 %= m1;
+  a2 %= m2;
+  return crt_(a1 < 0 ? a1 + m1 : a1, m1, a2 < 0 ? a2 + m2 : a2, m2);
+}
+// https://www.luogu.com.cn/problem/P1495
 
 }  // namespace cuzperf
