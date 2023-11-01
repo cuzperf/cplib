@@ -26,7 +26,7 @@ jobs:
         sudo apt update
         sudo apt install -y cmake lcov doxygen graphviz
         rm -rf build
-        cmake -B build -DDOXYGEN=ON
+        cmake -B build
         cmake --build build
         build/unit_test
       shell: bash
