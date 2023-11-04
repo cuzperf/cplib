@@ -26,7 +26,7 @@ jobs:
         sudo apt update
         sudo apt install -y cmake lcov doxygen graphviz
         rm -rf build
-        cmake -B build -DDOXYGEN=ON
+        cmake -B build
         cmake --build build
         build/unit_test
       shell: bash
@@ -42,7 +42,7 @@ jobs:
     - name: Build project with CMake and Test and coverage
       run: |
         rm -rf build
-        cmake -B build -DCOVERAGE=ON
+        cmake -B build
         cmake --build build
         build/unit_test
         cmake --build build --target coverage
@@ -63,7 +63,7 @@ jobs:
       run: |
         git submodule update --init --recursive
         brew update
-        brew install cmake
+        brew install cmake doxygen graphviz
       shell: bash
 
     - name: Build project with CMake and Test

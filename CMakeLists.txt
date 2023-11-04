@@ -19,10 +19,7 @@ message(STATUS BUILD_32BIT=${BUILD_32BIT})
 
 include(${CMAKE_SOURCE_DIR}/cmake/clang-format.cmake)
 include(${CMAKE_SOURCE_DIR}/cmake/coverage.cmake)
-
-if(DOXYGEN)
-  include(${CMAKE_SOURCE_DIR}/cmake/doxygen.cmake)
-endif()
+include(${CMAKE_SOURCE_DIR}/cmake/doxygen.cmake)
 
 # add test
 add_subdirectory(3rdparty/googletest)
